@@ -13,8 +13,33 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service(TranslatorType.TENCENT)
 public class TencentTranslateService implements TranslateService {
+
+    @Value("${translate.tencent.keyId}")
+    private String keyId;
+    @Value("${translate.tencent.keySecret}")
+    private String keySecret;
+
+    private CvmClient client;
+
+    @PostConstruct
+    public void init() throws Exception {
+        Credential cred = new Credential(keyId, keySecret);
+        client = new CvmClient(cred, "ap-shanghai");
+    }
+
     @Override
     public String translate(String text) {
+        try {
+
+
+            DescribeInstancesRequest req = new DescribeInstancesRequest();
+            DescribeInstancesResponse resp = client.DescribeInstances(req);
+
+            System.out.println(DescribeInstancesResponse.toJsonString(resp));
+        } catch (TencentCloudSDKException e) {
+            System.out.println(e.toString());
+        }
+
         return null;
     }
 }

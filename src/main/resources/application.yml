@@ -10,3 +10,6 @@ translate:
     keyId: ""
     keySecret: ""
     endpoint: "mt.cn-hangzhou.aliyuncs.com"
+  tencent:
+    keyId: ""
+    keySecret: ""
