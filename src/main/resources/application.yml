@@ -1,5 +1,6 @@
 translate:
-  service: aliyun
+  # 配置采用哪种第三方实现 aliyun/baidu/tencent
+  service: tencent
   deepl:
     key: ""
   baidu:
@@ -13,3 +14,5 @@ translate:
   tencent:
     keyId: ""
     keySecret: ""
+    region: "ap-shanghai"
+    projectId: 0

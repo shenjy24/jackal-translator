@@ -2,6 +2,7 @@ package com.jonas.translator.service.impl;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.jonas.translator.common.LanguageType;
 import com.jonas.translator.common.TranslatorType;
 import com.jonas.translator.service.TranslateService;
 import com.jonas.translator.util.GsonUtil;
@@ -17,7 +18,7 @@ import java.util.Map;
 /**
  * @author shenjy
  * @createTime 2023/8/30 9:53
- * @description <a href="http://api.fanyi.baidu.com/product/113">baidu translator</a>
+ * @description <a href="http://api.fanyi.baidu.com/product/113">百度翻译</a>
  */
 @Slf4j
 @Service(TranslatorType.BAIDU)
@@ -37,15 +38,15 @@ public class BaiduTranslateService implements TranslateService {
     public String translate(String text) {
         String result = "";
         try {
-            Map<String, String> params = buildParams(text, "auto", "en");
+            Map<String, String> params = buildParams(text, LanguageType.AUTO, LanguageType.EN);
             result = HttpGet.get(api, params);
             JsonObject jsonObject = GsonUtil.toJsonObject(result);
             JsonArray transResult = jsonObject.get(TRANS_RESULT).getAsJsonArray();
             return transResult.get(0).getAsJsonObject().get(TRANS_DST).getAsString();
         } catch (Exception e) {
             log.error(String.format("baidu translate error, text = %s, result = %s", text, result), e);
-            return "";
         }
+        return "";
     }
 
     private Map<String, String> buildParams(String query, String from, String to) {

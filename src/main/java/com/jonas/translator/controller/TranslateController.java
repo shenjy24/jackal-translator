@@ -3,6 +3,7 @@ package com.jonas.translator.controller;
 import com.jonas.translator.component.Translator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @createTime 2023/8/30 10:11
  * @description 翻译控制器
  */
-@RestController("/translate")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("translate")
 public class TranslateController {
 
     private final Translator translator;

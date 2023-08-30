@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author shenjy
  * @createTime 2023/8/30 18:40
- * @description 阿里机器翻译
+ * @description <a href="https://next.api.aliyun.com/api/alimt/2018-10-12/TranslateGeneral?spm=a2c4g.331882.0.0.77616cebApCLQY&tab=DOC&lang=JAVA&sdkStyle=dara&params={%22FormatType%22:%22text%22}">阿里翻译</a>
  */
 @Slf4j
 @Service(TranslatorType.ALIYUN)
@@ -43,7 +43,7 @@ public class AliyunTranslateService implements TranslateService {
     @Override
     public String translate(String text) {
         TranslateRequest request = new TranslateRequest()
-                .setSourceLanguage(LanguageType.ZH)
+                .setSourceLanguage(LanguageType.AUTO)
                 .setTargetLanguage(LanguageType.EN)
                 .setFormatType(FORMAT_TYPE)
                 .setScene(SCENE)
@@ -51,10 +51,10 @@ public class AliyunTranslateService implements TranslateService {
         TranslateResponse response = null;
         try {
             response = client.translate(request);
-            log.info("阿里云机器翻译，text={}, response={}", text, GsonUtil.toJsonObject(response));
+            log.info("阿里翻译，text={}, response={}", text, GsonUtil.toJsonObject(response));
             return response.body.data.translated;
         } catch (Exception e) {
-            log.error(String.format("阿里云机器翻译异常，text=%s, response=%s", text, GsonUtil.toJson(response)), e);
+            log.error(String.format("阿里翻译异常，text=%s, response=%s", text, GsonUtil.toJson(response)), e);
         }
         return "";
     }

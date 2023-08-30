@@ -14,6 +14,6 @@ public class DeeplTranslateService implements TranslateService {
 
     @Override
     public String translate(String text) {
-        return null;
+        return text;
     }
 }
