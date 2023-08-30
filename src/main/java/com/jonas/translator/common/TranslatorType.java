@@ -9,4 +9,5 @@ public class TranslatorType {
     public static final String DEEPL = "deepl";
     public static final String BAIDU = "baidu";
     public static final String ALIYUN = "aliyun";
+    public static final String TENCENT = "tencent";
 }
