@@ -1,0 +1,12 @@
+translate:
+  service: aliyun
+  deepl:
+    key: ""
+  baidu:
+    appId: ""
+    key: ""
+    api: http://api.fanyi.baidu.com/api/trans/vip/translate
+  aliyun:
+    keyId: ""
+    keySecret: ""
+    endpoint: "mt.cn-hangzhou.aliyuncs.com"
